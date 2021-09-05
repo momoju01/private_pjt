@@ -33,9 +33,7 @@ class Movie(models.Model):
 ```
 
 - 해당되는 조건을 field로 설정하여 class Movie 를 정의하였다.
-
 - `$ python manage.py makemigrations` 명령어를 사용해 새로운 마이그레이션을 만든다.
-
 - `$ python manage.py migrate`로 마이그레이션을 DB에 동기화한다.
 
 
@@ -88,8 +86,11 @@ admin.site.register(Movie, Admin_movie)
 ```
 
 - 새로운 class를 만들고 () 안에 `admin.ModelAdmin` 작성
-
 - list에 원하는 값을 넣어주고, 방금 만든 class 를 같이 등록해준다
+- `/주소/admin/` 입력시 admin site로 이동한다.
+- `$python manage.py createsuperuser`로 admin id, pw 등록한다
+
+
 
 
 
@@ -97,15 +98,15 @@ admin.site.register(Movie, Admin_movie)
 
 ## D. URL
 
-| URL 패턴             | 설명                    |
-| -------------------- | ----------------------- |
-| /movies/new/         | 새로운 영화 작성 Form   |
-| /movies/create/      | 영화 데이터 저장        |
-| /movies/             | 전체 영화 목록 조회     |
-| /movies/<pk>/        | 단일 영화 상세 조회     |
-| /movies/<pk>/edit/   | 단일 영화 수정 Form     |
-| /movies/<pk>/update/ | 수정된 영화 데이터 저장 |
-| /movies/<pk>/delete/ | 단일 영화 삭제          |
+| URL 패턴               | 설명                    |
+| ---------------------- | ----------------------- |
+| /movies/new/           | 새로운 영화 작성 Form   |
+| /movies/create/        | 영화 데이터 저장        |
+| /movies/               | 전체 영화 목록 조회     |
+| /movies/< pk>/         | 단일 영화 상세 조회     |
+| /movies/< pk >/edit/   | 단일 영화 수정 Form     |
+| /movies/< pk >/update/ | 수정된 영화 데이터 저장 |
+| /movies/< pk >/delete/ | 단일 영화 삭제          |
 
 
 
@@ -170,7 +171,19 @@ urlpatterns = [
 
 - 다른 링크로 이동해야하므로 a tag를 사용하여 url을 삽입해준다. 
 
+```python
+# community/settings.py
 
+TEMPLATES = [
+    {
+        ...
+        'DIRS': [BASE_DIR/'templates'], 
+        ...
+    },
+]
+```
+
+- base directory를 'templates'로 설정해준다.
 
 
 
