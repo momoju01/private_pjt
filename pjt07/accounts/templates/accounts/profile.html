@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{{ profile.username }}님의 프로필</h1>
+  <p>팔로잉 수 : {{ profile.followings.all|length }} / 팔로워 수 : {{ profile.followers.all|length }}</p>
+  {% if profile.username != request.user %}
+    {% if request.user in profile.followers.all %}
+      <form action="{% url 'accounts:follow' profile.username %}">
+      {% csrf_token %}
+      <input type="submit" value="언팔로우">
+      </form>
+    {% else %}
+      <form action="{% url 'accounts:follow' profile.username %}">
+      {% csrf_token %}
+      <input type="submit" value="팔로우">
+      </form>
+    {% endif %}
+
+  {% else %}
+  {% endif %}
+{% endblock content %}
